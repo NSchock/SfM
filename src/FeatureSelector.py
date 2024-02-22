@@ -7,7 +7,7 @@ class FeatureSelector:
     """
     def __init__(self,
                  nFeatures=0, nOctaveLayers=3, contrastThreshold=0.04,
-                 edgeThreshold=10, sigma=1.6, enable_precise_upscale=False):
+                 edgeThreshold=10, sigma=1.6, enablePreciseUpscale=False):
         """
         For an explanation of the above parameters see the OpenCV SIFT class documentation
         """

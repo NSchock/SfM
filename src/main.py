@@ -1,10 +1,11 @@
 import cv2 as cv
 import FeatureSelector as fs
 import FeatureMatcher as fm
+import FeatureVerifier as fv
 
 selector = fs.FeatureSelector()
 matcher = fm.FeatureMatcher()
-
+verifier = fv.FeatureVerifier()
 
 # images/sample.png does not exist yet
 # TODO: replace with an interactive version allowing one to upload images
@@ -14,7 +15,7 @@ image2 = cv.imread("images/sample2.png")
 grayImage2 = cv.cvtColor(image2,cv.COLOR_BGR2GRAY)
 
 keypoints1 = selector.selectKeypoints(grayImage)
-features1 = selector.computeFeatures(grayImage,keypoints)
+features1 = selector.computeFeatures(grayImage,keypoints1)
 
 keypoints2 = selector.selectKeypoints(grayImage2)
 features2 = selector.computeFeatures(grayImage2,keypoints2)
