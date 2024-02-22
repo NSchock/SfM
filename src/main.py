@@ -26,3 +26,16 @@ matches = matcher.findMatches(features1, features2)
 # point in the second image
 pointMatches = [(keypoints1[match.queryIdx].pt, keypoints2[match.trainIdx].pt) for match in matches]
 
+'''
+TODO: Add further steps in the SfM process:
+(IN PROCESS) Geometric Verification: Fundamental matrix is estimated, and inlier points are 
+assessed, in preparation for reconstruction.
+Initialization: Optimal image pair is selected from given list of images, and the first iteration of
+the reconstructed map is created.
+Image registration: A new image is added to the cache. New image points are added to the image list, and 
+the map is correspondingly updated.
+Triangulation: Existing image points, if visible from the new image, are updated with additional redundant
+information, to improve the stability of their position.
+Bundle adjustment: Errors introduced in image registration and triangulation are corrected for by the
+minimization of a loss function.
+'''
