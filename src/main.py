@@ -25,10 +25,11 @@ matches = matcher.findMatches(features1, features2)
 # should give a list of tuples ((x1,y1), (x2,y2)) where (x1,y1) is a point in the first image, and (x2,y2) the matching
 # point in the second image
 pointMatches = [(keypoints1[match.queryIdx].pt, keypoints2[match.trainIdx].pt) for match in matches]
+verifier = fv.FeatureVerifier(pointMatches)
 
 '''
 TODO: Add further steps in the SfM process:
-(IN PROCESS) Geometric Verification: Fundamental matrix is estimated, and inlier points are 
+(IN PROGRESS) Geometric Verification: Fundamental matrix is estimated, and inlier points are 
 assessed, in preparation for reconstruction.
 Initialization: Optimal image pair is selected from given list of images, and the first iteration of
 the reconstructed map is created.
