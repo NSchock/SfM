@@ -15,18 +15,15 @@ class Normalizer:
     def normalizeMatrix(self,initial):
         n = initial.length()
         sumVector = [0]*2
-        # Summing all points to find averages of x and y
-        for i in initial:
-            sumVector = i + sumVector
-        self._translation = sumVector/n
-        translatedMatrix = [[0,0]]*n
-        # Subtracting translation matrix to move the centroid (avg) to (0,0)
-        for i in range(0,n):
-            translatedMatrix[i] = initial[i] - self._translation
         translatedLengthSum = 0
+        # Summing all points to find averages of x and y
+        sumVector = np.sum(initial)
+        self._translation = sumVector/n
+        translatedMatrix = [self._translation]*n
+        # Subtracting translation matrix to move the centroid (avg) to (0,0)
+        translatedMatrix = np.add(initial,-translatedMatrix)
         # Summing all lengths of points in translated matrix
-        for i in range(0,n):
-            translatedLengthSum += np.sqrt(((translatedMatrix[i][0])^2)+((translatedMatrix[i][1])^2))
+        translatedLengthSum = np.sum(np.sqrt(np.sum(np.square(translatedMatrix),axis=1)))
         self._scalar = translatedLengthSum/(n*np.sqrt(2))
         self._normalized = translatedMatrix/self._scalar
         # Return normalized vector
